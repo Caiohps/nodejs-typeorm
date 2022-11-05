@@ -7,15 +7,15 @@ class CreateTagService {
     async execute(name: string) {
         const tagsRepositories = getCustomRepository(TagsRepositories);
 
-        if(!name) {
+        if (!name) {
             throw new Error("Incorrect name!");
         }
-
+        // SELECT * FROM TAGS WHERE NAME = 'name'
         const tagAlreadyExists = await tagsRepositories.findOne({
             name
         });
 
-        if(tagAlreadyExists){
+        if (tagAlreadyExists) {
             throw new Error("Tag already exists!");
         }
 
